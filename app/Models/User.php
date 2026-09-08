@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Mcp\Enums\Role;
 use Override;
 use PHPOpenSourceSaver\JWTAuth\Contracts\JWTSubject;
 
@@ -52,5 +53,10 @@ class User extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims()
     {
         return [];
+    }
+
+    #ESTABLECEMOS LA RELACION CON ROLES
+    public function role(){
+        return $this->belongsTo(Role::class);
     }
 }
